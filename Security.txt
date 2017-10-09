@@ -1,0 +1,34 @@
+AWS offers shared responsibility models:
+
+Infrastructure Services: 
+	This category includes compute services, such as Amazon EC2, and related services, such as Amazon Elastic Block Store (Amazon EBS), Auto Scaling, and Amazon Virtual Private Cloud (Amazon VPC).
+Container Services:
+	Container services include Amazon Relational Database Services (Amazon RDS), Amazon Elastic Map Reduce (Amazon EMR) and AWS Elastic Beanstalk
+Abstracted Services: 
+	This category includes high-level storage, database, and messaging services, such as Amazon Simple Storage Service (Amazon S3), Amazon Glacier, Amazon DynamoDB, Amazon Simple Queuing Service (Amazon SQS), and Amazon Simple Email Service (Amazon SES).
+
+Amazon EC2 Linux instances using the cloud-init service, when a new instance from a standard AWS AMI is launched, the public key of the Amazon EC2 key pair is appended to the initial operating system user’s ~/.ssh/authorized_keys file.
+
+Amazon EC2 Windows instances using the ec2config service, when a new instance from a standard AWS AMI is launched, the ec2config service sets a new random Administrator password for the instance and encrypts it using the corresponding Amazon EC2 key pair’s public key.
+
+Trusted Advisor tool, which offers a one-view snapshot of your service and helps identify common security misconfigurations, suggestions for improving system performance, and underutilized resources.
+
+2 types of sign-in credentials.
+1)Username/Password
+2)Multi-factor authentication (MFA) 
+
+2 types of credentials used for programmatic access to APIs.
+1)Access keys
+2)MFA for API calls
+
+You can choose to generate your own Amazon EC2 key pairs using industry- standard tools like OpenSSL.
+
+you have higher security requirements, you can implement alternative authentication mechanisms, including LDAP or Active Directory authentication, and disable Amazon EC2 key pair authentication.
+
+Protecting Data at Rest on Amazon EBS
+
+Encryption: TrueCrypt
+TrueCrypt is a third-party tool that offers transparent encryption of data at rest on Amazon EBS volumes. TrueCrypt supports both Microsoft Windows and Linux operating systems.
+
+Amazon software partners, such as Gazzang, provide specialized solutions for protecting data at rest and in transit on Amazon EMR.
+

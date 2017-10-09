@@ -1,0 +1,14 @@
+Geo DNS provides three levels of geographic granularity: 
+	continent, country, and state
+	
+Amazon Route 53 supports up to eight healthy records in response to each DNS query.
+
+Traffic Flow:
+
+Traffic Flow supports all Amazon Route 53 DNS Routing policies including latency, endpoint health, multivalue answers, weighted round robin, and geo . In addition to these, Traffic Flow also supports geoproximity based routing with traffic biasing. 
+
+traffic policy --> JSON-formatted text files with policies
+A traffic policy is the set of rules that you define to route end users’ requests to one of your application’s endpoints. You can create a traffic policy using the visual policy builder in the Amazon Route 53 Traffic Flow section of the Amazon Route 53 console. You can also create traffic policies as JSON-formatted text files and upload these policies using the Route 53 API, the AWS CLI, or the various AWS SDKs.
+
+policy record  --> associate the traffic policy with the appropriate DNS name within an Amazon Route 53.
+To start using Amazon Route 53 Traffic Flow to route traffic to your application using the traffic policy you’ve created, you create a policy record which associates the traffic policy with the appropriate DNS name within an Amazon Route 53 hosted zone that you own. 

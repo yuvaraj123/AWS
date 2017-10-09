@@ -1,0 +1,48 @@
+The total volume of data and number of objects you can store are unlimited. Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. The largest object that can be uploaded in a single PUT is 5 gigabytes. For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability.
+
+You can use Multi-Object Delete to delete large numbers of objects from Amazon S3. This feature allows you to send multiple object keys in a single request to speed up your deletes. Amazon does not charge you for using Multi-Object Delete.
+
+Amazon S3 is a simple key-based object store. When you store data, you assign a unique object key that can later be used to retrieve the data. Keys can be any string, and can be constructed to mimic hierarchical attributes.
+
+Amazon S3 buckets in all Regions provide read-after-write consistency for PUTS of new objects and eventual consistency for overwrite PUTS and DELETES.
+
+Any publicly available data in Amazon S3 can be downloaded via the BitTorrent protocol, in addition to the default client/server delivery mechanism. Simply add the ?torrent parameter at the end of your GET request in the REST API.
+
+By default, customers can provision up to 100 buckets per AWS account. However, you can increase your Amazon S3 bucket limit by visiting AWS Service Limits.
+
+four mechanisms for controlling access to Amazon S3 resources: 
+	Identity and Access Management (IAM) policies, 
+	bucket policies,
+	Access Control Lists (ACLs) and
+	query string authentication.
+	
+	IAM enables organizations with multiple employees to create and manage multiple users under a single AWS account. With IAM policies, companies can grant IAM users fine-grained control to their Amazon S3 bucket or objects while also retaining full control over everything the users do. 
+	
+	With bucket policies, companies can define rules which apply broadly across all requests to their Amazon S3 resources, such as granting write privileges to a subset of Amazon S3 resources. Customers can also restrict access based on an aspect of the request, such as HTTP referrer and IP address. 
+	
+	With ACLs, customers can grant specific permissions (i.e. READ, WRITE, FULL_CONTROL) to specific users for an individual bucket or object.
+	
+	With query string authentication, customers can create a URL to an Amazon S3 object which is only valid for a limited time. 
+
+encrypt data using 
+	SSE-S3 --> Amazon manages everything
+	
+	SSE-C --> you don’t need to implement or use a client-side library to perform the encryption and decryption of objects you store in Amazon S3, but you do need to manage the keys that you send to Amazon S3 to encrypt and decrypt objects.
+	
+	SSE-KMS --> enables you to use AWS Key Management Service (AWS KMS) to manage your encryption keys.AWS KMS provides an audit trail so you can see who used your key to access which object and when, as well as view failed attempts to access data from users without permission to decrypt the data. 
+	
+	Client library such as the Amazon S3 Encryption Client --> you retain control of the keys and complete the encryption and decryption of objects client-side using an encryption library of your choice.
+	
+Amazon Macie 
+	is an AI-powered security service that helps you prevent data loss by automatically discovering, classifying, and protecting sensitive data stored in Amazon S3. 
+	Amazon Macie continuously monitors data access activity for anomalies, and delivers alerts when it detects risk of unauthorized access or inadvertent data leaks.
+	At any time, customers can revoke Amazon Macie access to data in the Amazon S3 bucket.
+	When alerts are generated, you can use Amazon Macie for incident response, using Amazon CloudWatch Events to swiftly take action to protect your data.
+	
+Versioning offers an additional level of protection by providing a means of recovery when customers accidentally overwrite or delete objects.
+
+Glacier
+
+3 Types of reterivals are available in AWS Glacier
+	Expedited, Standard, or Bulk retrievals.
+You can retrieve 10 GB of your Amazon Glacier data per month for free. The free tier allowance can be used at any time during the month and applies to Standard retrievals.

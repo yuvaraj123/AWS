@@ -1,0 +1,34 @@
+The maximum visibility timeout for an Amazon SQS message is 12 hours.
+
+An Amazon SQS message can contain up to 10 metadata attributes.
+
+AmazonSQSBufferedAsyncClient:
+  Automatic batching of multiple SendMessage, DeleteMessage, or ChangeMessageVisibility requests without any required changes to the application.
+  Prefetching of messages into a local buffer that allows your application to immediately process messages from Amazon SQS without waiting for the messages to be retrieved.
+  
+The Amazon SQS Buffered Asynchronous Client does not currently support FIFO queues.
+
+You can delete all messages in queue without deleting Amazon SQS message queue using the PurgeQueue action.
+
+FIFQ Queue:
+	Amazon SQS APIs provide deduplication functionality that prevents your message producer from sending duplicates. Any duplicates introduced by the message producer are removed within a 5-minute deduplication interval.
+	
+The name of a FIFO queue must end with the .fifo suffix. The suffix counts towards the 80-character queue name limit.
+
+When you issue a DeleteMessage request on a previously-deleted message, Amazon SQS returns a success response.
+
+Server-side encryption (SSE) lets you transmit sensitive data in encrypted queues. SSE protects the contents of messages in Amazon SQS queues using keys managed in the AWS Key Management Service (AWS KMS). 
+
+A dead-letter queue is a queue that other (source) queues can target for messages that can't be processed (consumed) successfully. You can set aside and isolate these messages in the dead-letter queue to determine why their processing doesn't succeed.
+
+Amazon SQS message retention period to a value from 1 minute to 14 days. The default is 4 days. Once the message retention limit is reached, your messages are automatically deleted.
+
+Amazon SQS message size limit to a value between 1,024 bytes (1 KB), and 262,144 bytes (256 KB).
+To send messages larger than 256 KB, use the Amazon SQS Extended Client Library for Java. This library lets you send an Amazon SQS message that contains a reference to a message payload in Amazon S3 that can be as large as 2 GB. 
+
+Amazon SQS messages types including XML, JSON and unformatted text.
+
+The Amazon SQS API uses the AWS account number to identify AWS users.
+
+
+

@@ -1,0 +1,101 @@
+ROLES:
+
+knife role --help
+
+knife role list
+
+to upload role:
+
+knife role from file <role-path>
+
+to set role to node:
+
+knife node run_list set <node-name> <role-name>
+
+
+SEARCH:
+
+
+To search in node,role,enviornment,client,data_bags
+
+to display all the nodes:
+
+knife search node "*:*"
+
+particular attribute in the node:
+
+knife search node "*:*" -a ipaddress
+
+node name starts with Web:
+
+knife search node "name:web*"
+
+knife search node "name:web*" -a ipaddress
+
+search with multiple conditions:
+
+knife search node "name:web AND recipes:apache"
+
+same we can search in all  node,role,enviornment,client,data_bags indexes.
+
+
+
+Include Search inside recipe file:
+
+first use Search query and save it to varaible
+
+all_web_nodes = search('node','name:web')
+
+members = []  - array to store required values.
+
+loop through the all_web_nodes variable for ipaddress,hostname etc...example:
+
+all_web_nodes.each do |web_node|
+
+	member = {
+		
+		'hostname' => web_node[hostname],
+		'ipaddress' => web_node[ipaddress],
+		'port' => 80,
+		'ssl_port' => 80
+	}
+	
+	members.push(member)
+end
+
+
+node.default['haproxy']['members'] = members
+
+
+
+ENVIRONMENTS:
+
+knife environment list
+
+
+knife environment show _default
+
+Like Roles have to create environments/production.rb file.
+
+contents include:
+	name
+	description
+	cookbook 'apache', '= 0.2.1'     -- to define cookbook name and version
+	cookbook 'myhaproxy', '= 1.0.0'  -- to define cookbook name and version
+	
+	
+To upload environment to Chef Server
+
+knife environment from file enviornment/production.rb
+
+knife environment show production
+
+
+DATA_BAGS: Used to create users and groups in JSON formatted file.
+
+knife data bag list
+
+
+knife environment show _default
+
+knife data bag from file databag/groups/group1.json
