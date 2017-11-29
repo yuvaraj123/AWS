@@ -1,0 +1,8 @@
+Docker:
+
+docker stats container_name = show memory and performance of the container in realtime
+
+docker top container_name == gives memory and performance of the container but not in realtime
+
+docker exec == used to execute commands into running container without entering into container
+
