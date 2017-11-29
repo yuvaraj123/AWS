@@ -6,3 +6,42 @@ docker top container_name == gives memory and performance of the container but n
 
 docker exec == used to execute commands into running container without entering into container
 
+
+To name the container while creating:
+ 
+	--name mynewcontainer
+	
+	eg:
+    docker run -itd --name mynewcontainer ubuntu:latest /bin/bash
+
+	
+Rename the container:
+
+     docker rename <old_name> <new_name>
+	
+
+	
+docker attach <container_name> == start existing process
+
+docker exec -it <container_name> /bin/bash == creates new process for the container
+
+
+docker events --since 'lh' -- returns docker activity for last 1 hour
+
+docker events --filter event=attach -- returns only attach event 	
+
+convert docker image to tar ball:
+
+docker save ubuntu:latest > ubuntu.tar
+		
+		or
+
+		docker save --output ubuntu.tar ubuntu:latest 
+
+convert tar ball to docker image:
+
+docker load --input ubuntu.tar
+
+To tag image with new name but same id:(128 characters length)
+
+docker tag <old_name or id> <new_name>
