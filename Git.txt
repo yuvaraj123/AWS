@@ -1,0 +1,17 @@
+To find files in particular commit:
+git diff-tree <hash-code>
+
+To revert the last 2 commits:
+git revert HEAD~2..HEAD
+
+To run script everytime repository receives new commits:
+Use hooks inside .git folder
+Types of hooks: pre-receive,update,post-receive
+
+HEAD~1 refers to the commit parent to HEAD
+HEAD~2 refers to the grandparent of HEAD
+In case of merge commits, where the commit has two parents, ^ can be used to select one of the two parents, e.g. HEAD^2 can be used to follow the second parent.
+
+git checkout <hash-code> - to chedckout particular version of code
+
+
