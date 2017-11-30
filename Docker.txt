@@ -45,3 +45,14 @@ docker load --input ubuntu.tar
 To tag image with new name but same id:(128 characters length)
 
 docker tag <old_name or id> <new_name>
+
+docker network:
+
+	docker network ls
+	docker network inspect bridge
+ 
+	docker network create --subnet 10.0.1.0/16 --gateway 10.0.1.1 bridge01 -- to create custom network
+	
+	docker network rm bridge01 -- to remove the custom network
+	
+	docker run -it --name container1 --net bridge01 centos:latest /bin/bash -- to connect the container to custom network created by us
