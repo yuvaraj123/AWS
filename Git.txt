@@ -1,5 +1,9 @@
+DIFF:
+
 To find files in particular commit:
 git diff-tree <hash-code>
+
+REVERT:
 
 To revert the last 2 commits:
 git revert HEAD~2..HEAD
@@ -10,8 +14,52 @@ Types of hooks: pre-receive,update,post-receive
 
 HEAD~1 refers to the commit parent to HEAD
 HEAD~2 refers to the grandparent of HEAD
-In case of merge commits, where the commit has two parents, ^ can be used to select one of the two parents, e.g. HEAD^2 can be used to follow the second parent.
+In case of merge commits, where the commit has two parents, ^ can be used to select one of the two parents, e.g. HEAD^2 can be used to follow the 
+second parent.
+
+RESET:
+
+If you are planning undo local commit entirely whatever you changes you did on the commit, if you dont worry anything about that just do the following command.
+
+git reset --hard HEAD^1 (This command will ignore your entire commit and your changes will be lost completely from your local working tree).
+
+If you want undo your commit but you want changes you did on the commit into staging area(before commit just like after git add called staging area) then do the following command
+
+git reset --soft HEAD^1
+
+Now your committed files comes into staging area suppose if you want to unstage the files because you need to edit some wrong conent than do the following command
+
+git reset HEAD
+
+Now committed files comes into staged area into unstaged area now files are ready to edit so whatever you changes you want go edit and added it and make a fresh/new commit.
+
+REVERT vs RESET:
+
+For this reason, git revert should be used to undo changes on a public branch, and git reset should be reserved for undoing changes on a private branch. You can also think of git revert as a tool for undoing committed changes, while git reset HEAD is for undoing uncommitted changes.
+
+
+CHECKOUT:
 
 git checkout <hash-code> - to chedckout particular version of code
 
+PULL vs FETCH:
+ 
+difference between git pull and git fetch?
 
+Git pull command pulls new changes or commits from a particular branch from your central repository and updates your target branch in your local repository.
+
+Git fetch is also used for the same purpose but it works in a slightly different way. When you perform a git fetch, it pulls all new commits from the desired branch and stores it in a new branch in your local repository. If you want to reflect these changes in your target branch, git fetch must be followed with a git merge. Your target branch will only be updated after merging the target branch and fetched branch. Just to make it easy for you, remember the equation below:
+
+Git pull = git fetch + git merge
+
+STASH:
+
+Git stash?
+
+According to me you should first explain the need for Git stash.
+
+Often, when you’ve been working on part of your project, things are in a messy state and you want to switch branches for sometime to work on something else. The problem is, you don’t want to do a commit of half-done work just so you can get back to this point later. The answer to this issue is Git stash.
+
+Now explain what is Git stash. 
+
+Stashing takes your working directory that is, your modified tracked files and staged changes and saves it on a stack of unfinished changes that you can reapply at any time.
