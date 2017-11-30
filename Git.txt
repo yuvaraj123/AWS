@@ -50,7 +50,7 @@ Git pull command pulls new changes or commits from a particular branch from your
 
 Git fetch is also used for the same purpose but it works in a slightly different way. When you perform a git fetch, it pulls all new commits from the desired branch and stores it in a new branch in your local repository. If you want to reflect these changes in your target branch, git fetch must be followed with a git merge. Your target branch will only be updated after merging the target branch and fetched branch. Just to make it easy for you, remember the equation below:
 
-Git pull = git fetch + git merge
+GIT PULL = git fetch + git merge
 
 STASH:
 
