@@ -1,0 +1,47 @@
+Ansible:
+
+To run ansible commands from command prompt:
+
+ansible <host_name> -s -m yum -a "name=httpd state=latest"
+
+		-s for sudo
+		-m for module
+		-a for attribute
+		
+
+ansible all -m setup -a 'filter=*ipv4*'
+
+ansible all -m setup -a --tree facts -- to store server info into facts folder
+
+	facts -- custom folder name
+	
+To get more debug info:
+    
+	register : result
+  - debug var=result
+
+  
+Example playbook:
+---
+- hosts: centos
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: no
+  vars:
+    yuvi=complete
+  tasks:
+  - name : installing httpd
+	yum:
+	  name:httpd
+	  state: latest
+	register: result
+  - debug: var=result
+  
+  
+
+  
+  
+		
+
+		
